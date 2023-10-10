@@ -1,0 +1,67 @@
+#include<stdio.h>
+
+void read(int x[],int n)
+{
+	int i;
+	printf("Enter the numbers ");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&x[i]);
+	}
+}
+
+void simplemerge(int a[],int f,int s,int t)
+{
+	int i,j,k=0,temp[50];
+	i=f;
+	j=s;
+	while(i<s && j<=t)
+	{
+		if(a[i]<a[j])
+			temp[k++]=a[i++];
+		else
+			temp[k++]=a[j++];
+	}
+	while(i<s)
+		temp[k++]=a[i++];
+	while(j<=t)
+		temp[k++]=a[j++];
+	for(i=f,k=0;k<=t;)
+	{
+		a[i++]=temp[k++];
+	}
+}
+
+void mergesort(int a[],int begin, int end)
+{
+	int mid;
+	if(begin<end)
+	{
+		mid=(begin+end)/2;
+		mergesort(a,begin,mid);
+		mergesort(a,mid+1,end);
+		simplemerge(a,begin,mid+1,end);
+	}
+}
+
+void print(int x[],int n)
+{
+	int i;
+	printf("the sorted array is :");
+	for(i=0;i<n;i++)
+		{
+			printf("%d",x[i]);
+			printf("\t");
+		}
+}
+
+void main()
+{
+	int n,x[10],begin=0;
+	printf("Enter count of numbers ");
+	scanf("%d",&n);
+	int end=n-1;
+	read(x,n);
+	mergesort(x,begin,end);
+	print(x,n);
+}
