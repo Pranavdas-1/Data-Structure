@@ -1,0 +1,66 @@
+#include<stdio.h>
+
+void qusort(int x[],int start,int end)
+{
+	if(start<end)
+	{
+		int pos=partition(x,start,end);
+		qusort(x,start,pos-1);
+		qusort(x,pos+1,end);
+	}
+}
+
+int partition(int x[],int start,int end)
+{
+	int key,i,j;
+	key=x[start];
+	i=start+1;
+	j=end;
+	do
+	{
+		while(i<j && x[i]<key)
+		i++;
+		while(j>start && x[j]>key)
+		j--;
+		if(i<j)
+		swap(&x[i],&x[j]);
+	}
+	while(i<j);
+	swap(&x[start],&x[j]);
+	return j;
+}
+
+void swap(int *x,int *n)
+{
+	int t;
+		t=*x;
+		*x=*n;
+		*n=t;
+}
+
+void print(int x[],int n)
+{
+	int i;
+	printf("the sorted array is :");
+	for(i=0;i<n;i++)
+		{
+			printf("%d",x[i]);
+			printf("\t");
+		}
+}
+
+void main()
+{
+	int n ,a[20],start=0;
+	printf("Enter no. of element");
+	scanf("%d",&n);
+	int end=n-1;
+	int i;
+	printf("Enter %d elements ",n);
+	for(i=0;i<n;i++)
+	{
+	scanf("%d",&a[i]);
+	}
+	qusort(a,start,end);
+	print(a,n);
+}
