@@ -68,9 +68,22 @@ int deleteQ()
 }
 void Display(){
 	int i;
-	for(i=f;i<=r;i++){
-		printf("%d\t",Q[i]);
+	if(f==-1 && r==-1){
+		printf("Empty")
 	}
+	else if(f<r){
+		for(i=f;i<=r;i++){
+			printf("%d\n",Q[i]);
+		}
+	}
+	else(r<f){
+		for(i=0;i<=r;i++){
+			printf("%d\t",Q[]i)
+		}
+	}
+}
+
+	
 }
 int isempty(){
 	if(f==-1)
@@ -84,3 +97,4 @@ int isfull(){
 	else
 		return(0);
 }
+	
