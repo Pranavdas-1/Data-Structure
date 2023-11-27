@@ -127,14 +127,12 @@ int deleterear()
 }
 void Display(){
 	int i;
-	
-        if(f<r)
+
+	if(f==-1 && r==-1)
 	{
-		for(i=f;i<=r;i++)
-		{
-			printf("%d\n",Q[i]);
-		}
+		printf("Q is Empty");
 	}
+        
 	else if(r<f)
 	{
 		for(i=0;i<size;i++)
@@ -142,9 +140,12 @@ void Display(){
 			printf("%d\t",Q[i]);
 		}
 	}
-        else if(f==-1 && r==-1)
+        else(f<r)
 	{
-		printf("Q is Empty");
+		for(i=f;i<=r;i++)
+		{
+			printf("%d\n",Q[i]);
+		}
 	}
 }
 
